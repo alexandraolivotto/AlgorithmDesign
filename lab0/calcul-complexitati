@@ -1,0 +1,46 @@
+1. complexitatea temporala este O(n)
+
+2. 
+	T(n) = x * T(n-1)    |
+	T(n-1) = x * T(n-2)  |  => T(n) = x * x * T(n-2) = x ^ 2 * T(n-2)
+
+							=> T(n) = x ^ k * T (n-k)
+							=> T(n) = x ^ k * T (0), pentru n = k
+							=> T(n) = x ^ k * 1 = x ^ k = x ^ n => O(n) (inmultirea se face in O(1))
+
+3. 
+	
+	       |  T(0) = 1, const
+	T(n) = |  2 * T(n/2) + ct , n par        | ct = cost constant, O(1)
+	       |  2 * T((n-1)/2) + ct, n impar   |
+		   
+		   f(n) din Th. Master = 1 => c = 0									 |
+		   a = 2, b = 2, c = 0 | => cazul 3 din Th. Master => theta(n^ log in baza b din a) = theta (n) 
+									
+4. ambele sunt incluse in O(n)
+
+5. 
+
+	       | 0, n = 0                  => timp const
+	T(n) = | 1, n = 1                  => timp const.
+	       | T(n-1) + T(n-2), n > 1
+
+	T(n) = T(n-1) + T(n-2) + c, unde c = const.
+
+	pot sa consider ca T(n-1) aprox. egal cu T(n-2) =>
+
+	T(n) = 2*T(n-1) + c => T(n-1) = 2 * T(n-2) + c 
+	=> T(n) = 2 * 2 * T(n-2) + 2c +c = 4 * T(n-2) + 3c
+
+	....
+
+	=> T(n) = 2^k * T(n-k) + (2^k - 1) * c
+	
+	   T(n) = 2^n * T(0) + (2^n - 1) * c , T(0) = 0
+	=> T(n) = (2^n - 1) * c -> 2^n => O(2^n)
+
+
+6.  
+
+	T(0) = T(1) = const.
+	In rest, pentru a ajunge la al n-lea element parcurg n-1 elemente ale sirului fibonacci => O(n-1) = O(n)
